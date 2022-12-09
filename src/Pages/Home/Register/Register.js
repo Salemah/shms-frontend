@@ -37,9 +37,14 @@ const Register = () => {
                 if (response.data.validation_errors) {
                     setRegData({ ...regdata, errors: response.data.validation_errors });
                     swal("Warning", "Registration Error!", "error");
-                } else {
+                }
+                else if (response.data.status = 'success') {
                     swal("success", response.data.message, "success");
                     history.push("/login");
+                   
+                } else {
+
+                    swal("Warning", "Registration Error!", "error");
 
                 }
 
@@ -65,7 +70,7 @@ const Register = () => {
                                         <h4 class="mb-4 pb-3 log-head" >Register</h4>
                                         <form onSubmit={handleonSubmit}>
                                         <div class="form-group">
-                                            <input type="name" name="name" class="form-style" placeholder="Your Email" id="logemail"  onBlur={handleOnChange}/>
+                                            <input type="name" name="name" class="form-style" placeholder="Your Name" id="logemail"  onBlur={handleOnChange}/>
                                             <i class="input-icon uil uil-at"></i>
                                             <span style={{color: "red", fontSize: "12px", fontWeight: "bold"}}>{regdata.errors.name}</span>
                                         </div>	
@@ -90,7 +95,7 @@ const Register = () => {
                                             <span style={{color: "red", fontSize: "12px", fontWeight: "bold"}}>{regdata.errors.phone}</span>
                                         </div>
                                         <div class="form-group mt-2">
-                                            <input type="number" name="age" class="form-style" placeholder="Your phone" id="logpass"  onBlur={handleOnChange}/>
+                                            <input type="number" name="age" class="form-style" placeholder="Your Age" id="logpass"  onBlur={handleOnChange}/>
                                             <i class="input-icon uil uil-lock-alt"></i>
                                             <span style={{color: "red", fontSize: "12px", fontWeight: "bold"}}>{regdata.errors.age}</span>
                                         </div>

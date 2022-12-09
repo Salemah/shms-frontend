@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import swal from 'sweetalert';
-import './EditDoctor.css';
+import './EditSanitary.css';
 
-const EditDoctor = ({editprofile}) => {
-     const {id,doctor_name,doctor_phonenum,specialist_at,available_time} = editprofile;
+const EditSanitary = ({editprofile}) => {
+     const {id,booth_location,booth_padstock,} = editprofile;
     const [updateprofile,setUpdateprofile] = useState({
-   
+     booth_location:booth_location,
+     booth_padstock:booth_padstock,
         errors:[]});
     const handleOnChange = e => {
         const feild = e.target.name;
@@ -46,24 +47,14 @@ const EditDoctor = ({editprofile}) => {
                     <div class="modal-body">
                     <form onSubmit={handleonSubmit}>
                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label ">Name</label>
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Booth Location</label>
                                 <input type="text"  className="form-control "
-                              id="doctor_name" defaultValue={doctor_name} name='doctor_name'   onFocus={handleOnChange}/>
+                              id="booth_location" defaultValue={booth_location} name='booth_location'   onFocus={handleOnChange}/>
                             </div>
                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label ">Phone</label>
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Available Pad</label>
                                 <input type="text"  className="form-control "
-                              id="doctor_phonenum" defaultValue={doctor_phonenum} name='doctor_phonenum'   onFocus={handleOnChange}/>
-                            </div>
-                           <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label ">Specialist At</label>
-                                <input type="text"  className="form-control "
-                              id="specialist_at" defaultValue={specialist_at} name='specialist_at'   onFocus={handleOnChange}/>
-                            </div>
-                           <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label ">Available Time</label>
-                                <input type="text"  className="form-control "
-                              id="available_time" defaultValue={available_time} name='available_time'   onFocus={handleOnChange}/>
+                              id="booth_padstock" defaultValue={booth_padstock} name='booth_padstock'   onFocus={handleOnChange}/>
                             </div>
                          <button type="submit" class="submit">submit</button>
                     </form>
@@ -76,4 +67,4 @@ const EditDoctor = ({editprofile}) => {
      );
 };
 
-export default EditDoctor;
+export default EditSanitary;

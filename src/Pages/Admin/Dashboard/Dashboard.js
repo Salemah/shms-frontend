@@ -12,6 +12,10 @@ import { useHistory } from 'react-router-dom';
 import Help from '../Help/Help';
 import Doctor from '../Doctor/Doctor';
 import AddDoctor from '../AddDoctor/AddDoctor';
+import CyberSupport from '../CyberSupport/CyberSupport';
+import SanitaryBooth from '../SanitaryBooth/SanitaryBooth';
+import AddInstructor from '../AddInstructor/AddInstructor';
+import Instructor from '../Instructor/Instructor';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
@@ -72,8 +76,26 @@ const Dashboard = () => {
                             </li>
                             <li class="nav-item">
                                 <NavLink className="nav-link active"
-                                    to={`${url}/myappointment`}>
-                                    <span class="item-text">My AppointMent</span>
+                                    to={`${url}/cyberhelp`}>
+                                    <span class="item-text">Cyber Support Request</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink className="nav-link active"
+                                    to={`${url}/selfdefence`}>
+                                    <span class="item-text">Self Defence Course</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink className="nav-link active"
+                                    to={`${url}/sanitarybooth`}>
+                                    <span class="item-text">Sanitary Booth</span>
+                                </NavLink>
+                            </li>
+                            <li class="nav-item">
+                                <NavLink className="nav-link active"
+                                    to={`${url}/instructorlist`}>
+                                    <span class="item-text">Instructor List</span>
                                 </NavLink>
                             </li>
                             
@@ -125,11 +147,17 @@ const Dashboard = () => {
                             <Route path={`${path}/adddoctor`}>
                              <AddDoctor></AddDoctor>
                             </Route>
-                            <Route path={`${path}/myappointment`}>
-                               
+                            <Route path={`${path}/cyberhelp`}>
+                               <CyberSupport></CyberSupport>
                             </Route>
-                            <Route path={`${path}/myaprofile`}>
-                               
+                            <Route path={`${path}/sanitarybooth`}>
+                               <SanitaryBooth></SanitaryBooth>
+                            </Route>
+                            <Route path={`${path}/instructorlist`}>
+                               <Instructor></Instructor>
+                            </Route>
+                            <Route path={`${path}/addinstructor`}>
+                               <AddInstructor></AddInstructor>
                             </Route>
                             
                         </Switch>

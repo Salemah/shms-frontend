@@ -4,9 +4,11 @@ import swal from 'sweetalert';
 import './EditDoctor.css';
 
 const EditDoctor = ({editprofile}) => {
-     const {id,doctor_name,doctor_phonenum,specialist_at,available_time} = editprofile;
+     const {id,instructor_name,isntructor_phonenum,course_time,} = editprofile;
     const [updateprofile,setUpdateprofile] = useState({
-   
+     instructor_name:instructor_name,
+     instructor_phonenum:instructor_phonenum,
+     course_time:course_time,
         errors:[]});
     const handleOnChange = e => {
         const feild = e.target.name;
@@ -48,22 +50,17 @@ const EditDoctor = ({editprofile}) => {
                            <div className="mb-3">
                                 <label htmlFor="exampleInputPassword1" className="form-label ">Name</label>
                                 <input type="text"  className="form-control "
-                              id="doctor_name" defaultValue={doctor_name} name='doctor_name'   onFocus={handleOnChange}/>
+                              id="instructor_name" defaultValue={instructor_name} name='instructor_name'   onFocus={handleOnChange}/>
                             </div>
                            <div className="mb-3">
                                 <label htmlFor="exampleInputPassword1" className="form-label ">Phone</label>
                                 <input type="text"  className="form-control "
-                              id="doctor_phonenum" defaultValue={doctor_phonenum} name='doctor_phonenum'   onFocus={handleOnChange}/>
+                              id="isntructor_phonenum" defaultValue={isntructor_phonenum} name='isntructor_phonenum'   onFocus={handleOnChange}/>
                             </div>
                            <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label ">Specialist At</label>
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Course Time</label>
                                 <input type="text"  className="form-control "
-                              id="specialist_at" defaultValue={specialist_at} name='specialist_at'   onFocus={handleOnChange}/>
-                            </div>
-                           <div className="mb-3">
-                                <label htmlFor="exampleInputPassword1" className="form-label ">Available Time</label>
-                                <input type="text"  className="form-control "
-                              id="available_time" defaultValue={available_time} name='available_time'   onFocus={handleOnChange}/>
+                              id="course_time" defaultValue={course_time} name='course_time'   onFocus={handleOnChange}/>
                             </div>
                          <button type="submit" class="submit">submit</button>
                     </form>
@@ -76,4 +73,4 @@ const EditDoctor = ({editprofile}) => {
      );
 };
 
-export default EditDoctor;
+export default EditInstructor;
