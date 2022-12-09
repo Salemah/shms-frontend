@@ -1,0 +1,31 @@
+
+.headr{
+     background-color:  #8CAAF7 ;
+     padding-left: 10px;
+ }
+ .buttonlogin{
+     background-color: rgb(101, 124, 237);
+     color: white;
+     border: none;
+     border-radius: 5px;
+     padding: 10px 10px;
+ }
+ #login-button{
+     margin-right: 5px;
+ }
+ #patientimg{
+     width: 30px;
+ }
+ .patientdashboard{
+     padding:0 20px;
+     color: rgb(5, 5, 212);
+     font-weight: bold;
+     font-size: 18px;
+     
+ }
+ .dasboard-patient{
+     background-color: rgba(172, 186, 243, 0.412);
+     min-height: 92vh;
+    
+ }
+ 
