@@ -23,19 +23,33 @@ const Help = () => {
             });
     }, []);
     const handledelete = id => {
-     const confirm = window.confirm("Are you sure to delete this Appointment");
-     if (confirm) {
-         axios.post(`http://localhost:8000/api/help/Delete/${id}`)
-             .then(res => {
-               console.log(res);
-                 if (res) {
-                     swal("Success", res.data.success, "success");
-                 }
-                 else {
-                     swal("Warning", "Appointment delete Failed!", "error");
-                 }
-             })
+     const confirm = window.confirm("Are you sure to delete this Help");
+        if (confirm) {
+            axios.post(`http://localhost:8000/api/help/Delete/${id}`)
+                .then(res => {
+                console.log(res);
+                    if (res) {
+                        swal("Success", res.data.success, "success");
+                    }
+                    else {
+                        swal("Warning", " delete Failed!", "error");
+                    }
+                })
+        }
      }
+    const handleApprove= id => {
+     const confirm = window.confirm("Are you sure to Approve");
+        if (confirm) {
+            axios.post(`http://localhost:8000/api/help/approve/${id}`)
+                .then(res => {
+                    if (res) {
+                        swal("Success", res.data.success, "success");
+                    }
+                    else {
+                        swal("Warning", "Appointment delete Failed!", "error");
+                    }
+                })
+        }
      }
      return (
           <section>
@@ -53,9 +67,9 @@ const Help = () => {
                   </div>
               </div>
           </div> :<div className="">
-              <div class="container">
+              <div class="">
                <h3 className='text-center text-primary mt-2'>Help List </h3>
-                  <div class="row justify-content-md-center mt-5">
+                  <div class="row justify-content-md-center mt-1">
                       <div class="col-md-12">
                           <table class="table table-bordered border-primary ">
                               <thead className='table-danger'>
@@ -66,8 +80,8 @@ const Help = () => {
                                       <th >Age</th>
                                       <th >Victim Emergencycontact</th>
                                       <th >Victim Current Location</th>
+                                      <th >Status</th>
                                       <th >Action</th>
-                                      
                                   </tr>
                               </thead>
                               <tbody>
@@ -77,10 +91,12 @@ const Help = () => {
                                               <td >{dc.victim_name}</td>
                                               <td>{dc.victim_address}</td>
                                               <td>{dc.victim_phonenum}</td>
-                                              <td>{dc.victim_age}</td>
+                                              <td >{dc.victim_age}</td>
                                               <td>{dc.victim_emergencycontact}</td>
                                               <td>{dc.victim_currentlocation}</td>
-                                              <td><button id='cancel-btn-help' className='btn btn-sm btn-danger' onClick={() => handledelete(dc.id)} >Delete</button></td>
+                                              <td style={{fontWeight : "bold"}}>{dc.status}</td>
+                                              <td><button id='cancel-btn-help' className='btn btn-sm btn-danger p-1 me-2' onClick={() => handledelete(dc.id)} >Delete</button>
+                                              <button id='cancel-btn-help' className='btn btn-sm btn-success p-1 me-2' onClick={() => handleApprove(dc.id)} >  Approve</button></td>
                                           </tr>
                                       )}
   

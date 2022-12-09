@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 import './Doctor.css';
 import { RingLoader } from 'react-spinners';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import EditDoctor from '../EditDoctor/EditDoctor';
 const Doctor = () => {
     const [doctors, setDoctors] = useState([]);
     const [loading, setLoading] = useState(false);
     const [edituser, setEditUser] = useState({});
+    const history = useHistory();
     useEffect(() => {
         setLoading(true);
         setTimeout(() => {
@@ -26,7 +27,6 @@ const Doctor = () => {
             });
     }, []);
     const handledelete = id => {
-        alert(id);
         const confirm = window.confirm("Are you sure to delete this Appointment");
         if (confirm) {
             axios.post(`http://localhost:8000/api/doctor/delete/${id}`)
@@ -34,12 +34,14 @@ const Doctor = () => {
                     console.log(res);
                     if (res) {
                         swal("Success", res.data.success, "success");
+                        history.push("/dashboard/doctorlist");
                     }
                     else {
                         swal("Warning", "Appointment delete Failed!", "error");
                     }
                 })
         }
+     
     }
     return (
         <section>

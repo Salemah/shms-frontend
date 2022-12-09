@@ -23,28 +23,19 @@ const EditDoctor = ({editprofile}) => {
         const data = {
             ...updateprofile,id,
         }
-     
-        axios.post(`http://localhost:8000/api/PatientEditMyProfile`, data)
+        axios.post(`http://localhost:8000/api/doctor/update/${data.id}`, data)
             .then(res => {
-                
                 if (res.data.validation_errors) {
                     setUpdateprofile({ ...updateprofile, errors: res.data.validation_errors });
-                    swal("Warning", "No Change Your Profile", "error");
+                    swal("Warning", "No Change ", "error");
                 }
                 else {
-                    swal("Success", res.data.success, "success");
+                    swal("Success", res.data.message, "success");
                     
                 }
-            }
-            
+            } 
            )
-
-     
-
-
-
         e.preventDefault();
-
     }
      return (
           <div>
@@ -52,31 +43,31 @@ const EditDoctor = ({editprofile}) => {
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel">Update Profile</h5>
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Update Doctor</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                     <form onSubmit={handleonSubmit}>
-                         <div class="input-container ic1">
-                              <input id="doctor_name" value={doctor_name} name='doctor_name' class="input" type="text" placeholder=" "  onBlur={handleOnChange} />
-                              <div class="cut"></div>
-                              <label for="doctor_name"  class="placeholder">name</label>
-                         </div>
-                         <div class="input-container ic2">
-                              <input id="doctor_phonenum"  name='doctor_phonenum' class="input" type="text" placeholder=" " onBlur={handleOnChange}  value={doctor_phonenum}/>
-                              <div class="cut"></div>
-                              <label for="doctor_phonenum" class="placeholder">Phone Number</label>
-                         </div>
-                         <div class="input-container ic2">
-                              <input id="specialist_at" name='specialist_at' class="input" type="text" placeholder=" "value={specialist_at} onBlur={handleOnChange} />
-                              <div class="cut"></div>
-                              <label for="specialist_at" class="placeholder">Specialist At</label>
-                         </div>
-                         <div class="input-container ic2"> 
-                              <input id="available_time" name='available_time' class="input" type="text" placeholder=" " value={available_time} onBlur={handleOnChange} />
-                              <div class="cut"></div>
-                              <label for="available_time" class="placeholder">Available Time</label>
-                         </div>
+                           <div className="mb-3">
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Name</label>
+                                <input type="text"  className="form-control "
+                              id="doctor_name" defaultValue={doctor_name} name='doctor_name'   onFocus={handleOnChange}/>
+                            </div>
+                           <div className="mb-3">
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Phone</label>
+                                <input type="text"  className="form-control "
+                              id="doctor_phonenum" defaultValue={doctor_phonenum} name='doctor_phonenum'   onFocus={handleOnChange}/>
+                            </div>
+                           <div className="mb-3">
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Specialist At</label>
+                                <input type="text"  className="form-control "
+                              id="specialist_at" defaultValue={specialist_at} name='specialist_at'   onFocus={handleOnChange}/>
+                            </div>
+                           <div className="mb-3">
+                                <label htmlFor="exampleInputPassword1" className="form-label ">Available Time</label>
+                                <input type="text"  className="form-control "
+                              id="available_time" defaultValue={available_time} name='available_time'   onFocus={handleOnChange}/>
+                            </div>
                          <button type="submit" class="submit">submit</button>
                     </form>
                     </div>
